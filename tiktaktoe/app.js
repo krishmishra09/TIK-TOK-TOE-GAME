@@ -3,6 +3,7 @@ const resetButton = document.getElementById('reset-btn');
 const messageContainer = document.querySelector('.msg-container');
 const message = document.getElementById('msg');
 const newGameButton = document.getElementById('new-btn');
+const clickSound = document.getElementById('click-sound'); // Sound element
 
 let currentPlayer = 'X';
 let board = Array(9).fill(null);
@@ -32,6 +33,9 @@ function handleBoxClick(event) {
   const index = Array.from(boxes).indexOf(box);
 
   if (board[index] || !gameActive) return;
+
+  clickSound.currentTime = 0; // Reset sound position
+  clickSound.play();  
 
   board[index] = currentPlayer;
   box.textContent = currentPlayer;
